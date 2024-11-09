@@ -1,10 +1,9 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using LicenseDemoProject.ViewModels;
-using LicenseDemoProject.Views;
+using LicenseDemoProject.ViewModels.Viewmodels;
+using LicenseDemoProjectViews.Views;
 
 namespace LicenseDemoProject
 {
