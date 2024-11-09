@@ -1,0 +1,54 @@
+﻿<UserControl
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    mc:Ignorable="d"
+    x:Class="LicenseDemoProjectViews.Views.LicenseView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Viewbox>
+        <Grid Height="1080" Width="1920">
+            <TextBlock
+                FontSize="50"
+                Foreground="Black"
+                HorizontalAlignment="Center"
+                Text="Welcome to License View!"
+                VerticalAlignment="Center" />
+
+            <Button
+                Background="Black"
+                CornerRadius="20"
+                FontSize="25"
+                Height="80"
+                HorizontalAlignment="Left"
+                HorizontalContentAlignment="Center"
+                Margin="5"
+                Tapped="GoBackButton_OnTapped"
+                VerticalAlignment="Bottom"
+                VerticalContentAlignment="Center"
+                Width="250">
+                Go Back
+                <Button.Styles>
+                    <Style Selector="Button">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="Foreground" Value="White" />
+                    </Style>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="DarkGray" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="Foreground" Value="Black" />
+                    </Style>
+                    <Style Selector="Button:pressed /template/ ContentPresenter">
+                        <Setter Property="Background" Value="Gray" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="Foreground" Value="Black" />
+                    </Style>
+                </Button.Styles>
+            </Button>
+        </Grid>
+    </Viewbox>
+
+</UserControl>

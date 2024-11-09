@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="QLM.QlmLicenseLib" Version="18.0.24304.3" />
+    </ItemGroup>
+
 </Project>

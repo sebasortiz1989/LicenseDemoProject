@@ -1,4 +1,5 @@
-﻿using LicenseDemoProject.ViewModels.Viewmodels;
+﻿using LicenseDemoProject.Services;
+using LicenseDemoProject.ViewModels.Viewmodels;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LicenseDemoProject.ViewModels.Container;
@@ -32,10 +33,11 @@ public class ViewModelProvider
     private void RegisterViewModels()
     {
         services.AddSingleton<MainViewModel, MainViewModel>();
+        services.AddSingleton<LicenseViewModel, LicenseViewModel>();
     }
 
     private void RegisterServices()
     {
-        // services.AddSingleton<ISoundLicenseService, LicenseService>();
+        services.AddSingleton<LicenseValidator, LicenseValidator>();
     }
 }

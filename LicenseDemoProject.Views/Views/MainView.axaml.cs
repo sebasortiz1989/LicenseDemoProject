@@ -10,6 +10,7 @@ public partial class MainView : UserControl
     {
         InitializeComponent();
         ((InitialView)ViewProvider.Instance.GetView(typeof(InitialView))!).ShowViewAction += ShowScreenActionFunction;
+        ((LicenseView)ViewProvider.Instance.GetView(typeof(LicenseView))!).ShowViewAction += ShowScreenActionFunction;
         ShowScreenActionFunction(ViewsEnum.InitialView);
     }
 
@@ -19,6 +20,9 @@ public partial class MainView : UserControl
         {
             case ViewsEnum.InitialView:
                 ContentView.Content = ViewProvider.Instance.GetView(typeof(InitialView));
+                break;
+            case ViewsEnum.LicenseView:
+                ContentView.Content = ViewProvider.Instance.GetView(typeof(LicenseView));
                 break;
         }
     }
