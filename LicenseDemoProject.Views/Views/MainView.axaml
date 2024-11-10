@@ -1,5 +1,5 @@
 <UserControl
-    Background="#FFCCD5E2"
+    Background="Black"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     mc:Ignorable="d"
@@ -19,7 +19,7 @@
     </Design.DataContext>
 
     <Viewbox>
-        <Grid>
+        <Grid Background="#FFCCD5E2">
             <ContentControl x:Name="ContentView" />
         </Grid>
     </Viewbox>

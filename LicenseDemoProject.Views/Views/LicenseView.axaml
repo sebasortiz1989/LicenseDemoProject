@@ -4,18 +4,119 @@
     mc:Ignorable="d"
     x:Class="LicenseDemoProjectViews.Views.LicenseView"
     xmlns="https://github.com/avaloniaui"
+    xmlns:components="clr-namespace:LicenseDemoProjectViews.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Viewbox>
         <Grid Height="1080" Width="1920">
-            <TextBlock
-                FontSize="50"
-                Foreground="Black"
-                HorizontalAlignment="Center"
-                Text="Welcome to License View!"
-                VerticalAlignment="Center" />
+            <Border
+                Background="White"
+                BoxShadow="0 2 10 0 #60000000"
+                CornerRadius="20"
+                Height="700"
+                Name="WhiteBorder"
+                Width="850">
+                <StackPanel>
+                    <Border
+                        Background="Black"
+                        CornerRadius="50"
+                        Height="100"
+                        HorizontalAlignment="Center"
+                        Margin="0,40,0,0"
+                        VerticalAlignment="Top"
+                        Width="100">
+                        <Image
+                            Height="60"
+                            Width="60"
+                            x:Name="MyImage" />
+                    </Border>
+
+                    <TextBlock
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Foreground="Black"
+                        HorizontalAlignment="Center"
+                        Margin="20"
+                        Text="Unlock Pro" />
+
+                    <TextBlock
+                        FontSize="22"
+                        Foreground="#FF586075"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,20"
+                        Text="Enter your license key to unlock pro version." />
+
+                    <StackPanel HorizontalAlignment="Stretch" Margin="30">
+                        <TextBlock
+                            FontSize="22"
+                            Foreground="#FF586075"
+                            Margin="0,0,0,20"
+                            Text="License Key" />
+
+                        <Grid HorizontalAlignment="Stretch">
+                            <TextBox
+                                BorderBrush="Black"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                FontSize="22"
+                                Height="60"
+                                HorizontalAlignment="Left"
+                                PasswordChar="*"
+                                UseFloatingWatermark="False"
+                                VerticalContentAlignment="Center"
+                                Watermark="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
+                                Width="580" />
+                            <Button
+                                Background="Black"
+                                CornerRadius="15"
+                                FontSize="25"
+                                Height="60"
+                                HorizontalAlignment="Right"
+                                HorizontalContentAlignment="Center"
+                                Tapped="UnlockButton_OnTapped"
+                                VerticalAlignment="Bottom"
+                                VerticalContentAlignment="Center"
+                                Width="180">
+                                Unlock --&gt;
+                                <Button.Styles>
+                                    <Style Selector="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="BorderBrush" Value="Black" />
+                                        <Setter Property="Foreground" Value="White" />
+                                    </Style>
+                                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                                        <Setter Property="Background" Value="DarkGray" />
+                                        <Setter Property="BorderBrush" Value="Black" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </Style>
+                                    <Style Selector="Button:pressed /template/ ContentPresenter">
+                                        <Setter Property="Background" Value="Gray" />
+                                        <Setter Property="BorderBrush" Value="Black" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </Style>
+                                </Button.Styles>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+
+                    <Border
+                        BorderBrush="#FF586075"
+                        BorderThickness="0,0,0,2"
+                        Margin="40" />
+
+                    <components:ButtonLink
+                        FontSize="22"
+                        LinkText="Buy Now --&gt;"
+                        Margin="40,60,0,0" />
+
+                    <components:ButtonLink
+                        FontSize="22"
+                        LinkText="I bought Pro. Where is my license key?"
+                        Margin="40,30,0,0" />
+                </StackPanel>
+            </Border>
 
             <Button
                 Background="Black"

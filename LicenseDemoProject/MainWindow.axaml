@@ -1,6 +1,7 @@
 <Window
+    Background="Black"
     Icon="/Assets/avalonia-logo.ico"
-    Title="PokerStrategyTrial.Views"
+    Title="License Demo Project"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     mc:Ignorable="d"

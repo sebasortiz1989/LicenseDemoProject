@@ -34,5 +34,6 @@ public sealed class ViewProvider
         services.AddSingleton<MainView, MainView>();
         services.AddSingleton<InitialView, InitialView>();
         services.AddSingleton<LicenseView, LicenseView>();
+        services.AddSingleton<LicenseActivatedView, LicenseActivatedView>();
     }
 }

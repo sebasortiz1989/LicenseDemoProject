@@ -11,6 +11,7 @@ public partial class MainView : UserControl
         InitializeComponent();
         ((InitialView)ViewProvider.Instance.GetView(typeof(InitialView))!).ShowViewAction += ShowScreenActionFunction;
         ((LicenseView)ViewProvider.Instance.GetView(typeof(LicenseView))!).ShowViewAction += ShowScreenActionFunction;
+        ((LicenseActivatedView)ViewProvider.Instance.GetView(typeof(LicenseActivatedView))!).ShowViewAction += ShowScreenActionFunction;
         ShowScreenActionFunction(ViewsEnum.InitialView);
     }
 
@@ -23,6 +24,9 @@ public partial class MainView : UserControl
                 break;
             case ViewsEnum.LicenseView:
                 ContentView.Content = ViewProvider.Instance.GetView(typeof(LicenseView));
+                break;
+            case ViewsEnum.LicenseActivatedView:
+                ContentView.Content = ViewProvider.Instance.GetView(typeof(LicenseActivatedView));
                 break;
         }
     }

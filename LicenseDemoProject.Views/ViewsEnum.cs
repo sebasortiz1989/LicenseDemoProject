@@ -4,4 +4,5 @@ public enum ViewsEnum
 {
     InitialView,
     LicenseView,
+    LicenseActivatedView
 }
