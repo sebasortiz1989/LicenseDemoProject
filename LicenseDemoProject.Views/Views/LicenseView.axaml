@@ -3,11 +3,17 @@
     d:DesignWidth="1920"
     mc:Ignorable="d"
     x:Class="LicenseDemoProjectViews.Views.LicenseView"
+    x:DataType="viewmodels:LicenseViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:components="clr-namespace:LicenseDemoProjectViews.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:LicenseDemoProject.ViewModels.Viewmodels;assembly=LicenseDemoProject.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <viewmodels:LicenseViewModel />
+    </Design.DataContext>
 
     <Viewbox>
         <Grid Height="1080" Width="1920">
@@ -64,6 +70,7 @@
                                 Height="60"
                                 HorizontalAlignment="Left"
                                 PasswordChar="*"
+                                Text="{Binding LicenseKeyText}"
                                 UseFloatingWatermark="False"
                                 VerticalContentAlignment="Center"
                                 Watermark="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"

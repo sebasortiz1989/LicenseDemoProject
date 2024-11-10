@@ -15,15 +15,6 @@ namespace LicenseDemoProjectViews.Views;
 public partial class LicenseView : UserControl
 {
     private LicenseViewModel? _viewModel;
-    private string activationKey = string.Empty;
-    private string computerKey = string.Empty;
-    private string webServiceUrl = string.Empty;
-    private string computerId = "01";
-
-    private string qlmVersion = "5.0.00";
-    private string qlmUserData = string.Empty;
-
-    bool activationResult = false;
 
     public LicenseView()
     {
@@ -39,10 +30,8 @@ public partial class LicenseView : UserControl
     protected override void OnLoaded(RoutedEventArgs e)
     {
         base.OnLoaded(e);
- 
-        bool needsActivation = false;
-        string errorMsg = string.Empty;
-        if (_viewModel?.LicenseValidator.ValidateLicenseAtStartup(Environment.MachineName, ref needsActivation, ref errorMsg) == false)
+
+        if (_viewModel != null && _viewModel.ValidateLicense())
         {
             ShowViewAction?.Invoke(ViewsEnum.LicenseActivatedView);
         }
@@ -63,21 +52,8 @@ public partial class LicenseView : UserControl
 
     private void UnlockButton_OnTapped(object? sender, TappedEventArgs e)
     {
-        if (_viewModel == null)
-            return;
-
-        _viewModel.LicenseValidator.QlmLicenseObject.ActivateLicense(
-            webServiceUrl,
-            LicenseKeyTextBox.Text,
-            computerId,
-            Environment.MachineName,
-            qlmVersion,
-            qlmUserData,
-            out var response);
-
-        ILicenseInfo licenseInfo = new LicenseInfo();
         string message = string.Empty;
-        if (_viewModel.LicenseValidator.QlmLicenseObject.ParseResults(response, ref licenseInfo, ref message))
+        if (_viewModel != null && _viewModel.TryActivateLicense(out message))
         {
             ShowViewAction?.Invoke(ViewsEnum.LicenseActivatedView);
         }

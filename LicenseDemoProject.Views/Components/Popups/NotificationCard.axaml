@@ -1,0 +1,217 @@
+<ResourceDictionary
+    x:CompileBindings="True"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <NotificationCard>
+            <TextBlock Text="Hello World" />
+        </NotificationCard>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="NotificationCard" x:Key="{x:Type NotificationCard}">
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="MinWidth" Value="480" />
+        <Setter Property="Foreground" Value="{Binding $self.Foreground}" />
+        <Setter Property="RenderTransformOrigin" Value="50%,75%" />
+        <Setter Property="Background" Value="#43444A" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="NotificationCard">
+                <LayoutTransformControl Name="PART_LayoutTransformControl" UseRenderTransform="True">
+                    <Border CornerRadius="{TemplateBinding CornerRadius}" Margin="8">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            ClipToBounds="True"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Name="NotificationBorder">
+                            <DockPanel>
+                                <PathIcon
+                                    Data="M9.99992 2.49999C5.85778 2.49999 2.49992 5.85786 2.49992 9.99999C2.49992 14.1421 5.85778 17.5 9.99992 17.5C14.1421 17.5 17.4999 14.1421 17.4999 9.99999C17.4999 5.85786 14.1421 2.49999 9.99992 2.49999ZM0.833252 9.99999C0.833252 4.93738 4.93731 0.833328 9.99992 0.833328C15.0625 0.833328 19.1666 4.93738 19.1666 9.99999C19.1666 15.0626 15.0625 19.1667 9.99992 19.1667C4.93731 19.1667 0.833252 15.0626 0.833252 9.99999Z                    M10.0001 9.16667C10.4603 9.16667 10.8334 9.53977 10.8334 10V13.3333C10.8334 13.7936 10.4603 14.1667 10.0001 14.1667C9.53984 14.1667 9.16675 13.7936 9.16675 13.3333V10C9.16675 9.53977 9.53984 9.16667 10.0001 9.16667Z                    M9.16675 6.66666C9.16675 6.20642 9.53984 5.83333 10.0001 5.83333H10.0084C10.4687 5.83333 10.8417 6.20642 10.8417 6.66666C10.8417 7.1269 10.4687 7.49999 10.0084 7.49999H10.0001C9.53984 7.49999 9.16675 7.1269 9.16675 6.66666Z"
+                                    Height="20"
+                                    IsVisible="False"
+                                    Margin="20,20,20,0"
+                                    Name="NotificationIcon"
+                                    VerticalAlignment="Top"
+                                    Width="20" />
+                                <ContentControl
+                                    Content="{TemplateBinding Content}"
+                                    MinHeight="64"
+                                    Name="PART_Content">
+                                    <ContentControl.DataTemplates>
+                                        <DataTemplate DataType="INotification">
+                                            <StackPanel
+                                                Margin="0,20,20,20"
+                                                Spacing="8"
+                                                Width="360">
+                                                <TextBlock
+                                                    FontSize="18"
+                                                    FontWeight="600"
+                                                    Foreground="{TemplateBinding Foreground}"
+                                                    Text="{Binding Title}" />
+                                                <TextBlock
+                                                    FontSize="16"
+                                                    FontWeight="400"
+                                                    Foreground="{TemplateBinding Foreground}"
+                                                    Margin="0,0,8,0"
+                                                    MaxHeight="80"
+                                                    Text="{Binding Message}"
+                                                    TextWrapping="Wrap" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                        <DataTemplate DataType="x:String">
+                                            <TextBlock
+                                                Margin="12"
+                                                Text="{Binding}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </ContentControl.DataTemplates>
+                                </ContentControl>
+                                <Button
+                                    Height="20"
+                                    Margin="20,20,20,0"
+                                    Name="CloseButton"
+                                    VerticalAlignment="Top"
+                                    Width="20">
+                                    <PathIcon
+                                        Data="M15.5893 5.58926C15.9148 5.26382 15.9148 4.73619 15.5893 4.41075C15.2639 4.08531 14.7363 4.08531 14.4108 4.41075L10.0001 8.82149L5.58934 4.41075C5.2639 4.08531 4.73626 4.08531 4.41083 4.41075C4.08539 4.73619 4.08539 5.26382 4.41083 5.58926L8.82157 10L4.41083 14.4107C4.08539 14.7362 4.08539 15.2638 4.41083 15.5893C4.73626 15.9147 5.2639 15.9147 5.58934 15.5893L10.0001 11.1785L14.4108 15.5893C14.7363 15.9147 15.2639 15.9147 15.5893 15.5893C15.9148 15.2638 15.9148 14.7362 15.5893 14.4107L11.1786 10L15.5893 5.58926Z"
+                                        Foreground="#323232"
+                                        Height="20"
+                                        Name="CloseIcon"
+                                        Width="20" />
+                                </Button>
+                            </DockPanel>
+                        </Border>
+                    </Border>
+                </LayoutTransformControl>
+            </ControlTemplate>
+        </Setter>
+
+        <ControlTheme.Animations>
+            <Animation
+                Duration="0:1:0"
+                Easing="LinearEasing"
+                FillMode="Forward">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Opacity" Value="0" />
+                    <Setter Property="TranslateTransform.Y" Value="20" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="0.85" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="0.85" />
+                </KeyFrame>
+                <KeyFrame Cue="30%">
+                    <Setter Property="TranslateTransform.Y" Value="-20" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Opacity" Value="1" />
+                    <Setter Property="TranslateTransform.Y" Value="0" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                </KeyFrame>
+            </Animation>
+        </ControlTheme.Animations>
+
+        <Style Selector="^[IsClosing=true] /template/ LayoutTransformControl#PART_LayoutTransformControl">
+            <Setter Property="RenderTransformOrigin" Value="50%,0%" />
+            <Style.Animations>
+                <Animation Duration="0:1:0" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="TranslateTransform.X" Value="0" />
+                        <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="70%">
+                        <Setter Property="TranslateTransform.X" Value="800" />
+                        <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="ScaleTransform.ScaleY" Value="0" />
+                        <Setter Property="TranslateTransform.X" Value="800" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^[IsClosing=true]">
+            <Style.Animations>
+                <Animation Duration="0:1:0" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="IsClosed" Value="True" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!--  Card style modification  -->
+        <!--  INFORMATION  -->
+        <Style Selector="^:information /template/ PathIcon#NotificationIcon">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Foreground" Value="#323232" />
+            <Setter Property="Data" Value="M9.99992 2.49999C5.85778 2.49999 2.49992 5.85786 2.49992 9.99999C2.49992 14.1421 5.85778 17.5 9.99992 17.5C14.1421 17.5 17.4999 14.1421 17.4999 9.99999C17.4999 5.85786 14.1421 2.49999 9.99992 2.49999ZM0.833252 9.99999C0.833252 4.93738 4.93731 0.833328 9.99992 0.833328C15.0625 0.833328 19.1666 4.93738 19.1666 9.99999C19.1666 15.0626 15.0625 19.1667 9.99992 19.1667C4.93731 19.1667 0.833252 15.0626 0.833252 9.99999Z                    M10.0001 9.16667C10.4603 9.16667 10.8334 9.53977 10.8334 10V13.3333C10.8334 13.7936 10.4603 14.1667 10.0001 14.1667C9.53984 14.1667 9.16675 13.7936 9.16675 13.3333V10C9.16675 9.53977 9.53984 9.16667 10.0001 9.16667Z                    M9.16675 6.66666C9.16675 6.20642 9.53984 5.83333 10.0001 5.83333H10.0084C10.4687 5.83333 10.8417 6.20642 10.8417 6.66666C10.8417 7.1269 10.4687 7.49999 10.0084 7.49999H10.0001C9.53984 7.49999 9.16675 7.1269 9.16675 6.66666Z" />
+        </Style>
+        <Style Selector="^:information /template/ Border#NotificationBorder">
+            <Setter Property="Background" Value="#2C75B1" />
+        </Style>
+        <Style Selector="^:information">
+            <Setter Property="Foreground" Value="#323232" />
+        </Style>
+
+        <!--  SUCCESS  -->
+        <Style Selector="^:success /template/ PathIcon#NotificationIcon">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="Data" Value="M13.0527 3.14453C11.5754 2.48628 9.92486 2.32321 8.34731 2.67964C6.76975 3.03606 5.34968 3.89289 4.29887 5.12233C3.24807 6.35177 2.62284 7.88795 2.51642 9.50176C2.41001 11.1156 2.82811 12.7206 3.70838 14.0773C4.58865 15.4341 5.88392 16.47 7.40102 17.0305C8.91811 17.591 10.5757 17.646 12.1267 17.1875C13.6776 16.7289 15.0388 15.7813 16.0072 14.4859C16.9755 13.1905 17.4992 11.6168 17.5002 9.99953V9.23334C17.5002 8.7731 17.8733 8.4 18.3335 8.4C18.7937 8.4 19.1668 8.7731 19.1668 9.23334V10C19.1657 11.9767 18.5256 13.9006 17.3421 15.4838C16.1585 17.067 14.4948 18.2253 12.5992 18.7857C10.7036 19.3462 8.67765 19.2789 6.82343 18.5938C4.9692 17.9088 3.3861 16.6427 2.31021 14.9845C1.23432 13.3262 0.723305 11.3645 0.853366 9.3921C0.983428 7.41967 1.7476 5.54211 3.03192 4.03946C4.31624 2.53682 6.05188 1.48958 7.98 1.05395C9.90812 0.618315 11.9254 0.817623 13.731 1.62215C14.1514 1.80946 14.3403 2.30211 14.153 2.7225C13.9657 3.1429 13.4731 3.33184 13.0527 3.14453Z            M18.9221 2.74378C19.2477 3.06906 19.248 3.59669 18.9227 3.92229L10.5894 12.264C10.4331 12.4204 10.2211 12.5083 10 12.5083C9.77896 12.5084 9.56691 12.4206 9.41058 12.2643L6.91058 9.76426C6.58514 9.43882 6.58514 8.91118 6.91058 8.58574C7.23602 8.26031 7.76366 8.26031 8.08909 8.58574L9.99954 10.4962L17.7436 2.74437C18.0689 2.41877 18.5965 2.41851 18.9221 2.74378Z" />
+        </Style>
+        <Style Selector="^:success /template/ Border#NotificationBorder">
+            <Setter Property="Background" Value="#529A13" />
+        </Style>
+        <Style Selector="^:success">
+            <Setter Property="Foreground" Value="#FFFFFF" />
+        </Style>
+
+        <!--  WARNING  -->
+        <Style Selector="^:warning /template/ PathIcon#NotificationIcon">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Foreground" Value="#323232" />
+            <Setter Property="Data" Value="M9.99992 2.49999C5.85778 2.49999 2.49992 5.85786 2.49992 9.99999C2.49992 14.1421 5.85778 17.5 9.99992 17.5C14.1421 17.5 17.4999 14.1421 17.4999 9.99999C17.4999 5.85786 14.1421 2.49999 9.99992 2.49999ZM0.833252 9.99999C0.833252 4.93738 4.93731 0.833328 9.99992 0.833328C15.0625 0.833328 19.1666 4.93738 19.1666 9.99999C19.1666 15.0626 15.0625 19.1667 9.99992 19.1667C4.93731 19.1667 0.833252 15.0626 0.833252 9.99999Z                    M10.0001 9.16667C10.4603 9.16667 10.8334 9.53977 10.8334 10V13.3333C10.8334 13.7936 10.4603 14.1667 10.0001 14.1667C9.53984 14.1667 9.16675 13.7936 9.16675 13.3333V10C9.16675 9.53977 9.53984 9.16667 10.0001 9.16667Z                    M9.16675 6.66666C9.16675 6.20642 9.53984 5.83333 10.0001 5.83333H10.0084C10.4687 5.83333 10.8417 6.20642 10.8417 6.66666C10.8417 7.1269 10.4687 7.49999 10.0084 7.49999H10.0001C9.53984 7.49999 9.16675 7.1269 9.16675 6.66666Z" />
+        </Style>
+        <Style Selector="^:warning /template/ Border#NotificationBorder">
+            <Setter Property="Background" Value="#FFC140" />
+        </Style>
+        <Style Selector="^:warning">
+            <Setter Property="Foreground" Value="#323232" />
+        </Style>
+
+        <!--  ERROR  -->
+        <Style Selector="^:error /template/ PathIcon#NotificationIcon">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="Data" Value="M9.99992 2.49999C5.85778 2.49999 2.49992 5.85786 2.49992 9.99999C2.49992 14.1421 5.85778 17.5 9.99992 17.5C14.1421 17.5 17.4999 14.1421 17.4999 9.99999C17.4999 5.85786 14.1421 2.49999 9.99992 2.49999ZM0.833252 9.99999C0.833252 4.93738 4.93731 0.833328 9.99992 0.833328C15.0625 0.833328 19.1666 4.93738 19.1666 9.99999C19.1666 15.0626 15.0625 19.1667 9.99992 19.1667C4.93731 19.1667 0.833252 15.0626 0.833252 9.99999Z                    M10.0001 9.16667C10.4603 9.16667 10.8334 9.53977 10.8334 10V13.3333C10.8334 13.7936 10.4603 14.1667 10.0001 14.1667C9.53984 14.1667 9.16675 13.7936 9.16675 13.3333V10C9.16675 9.53977 9.53984 9.16667 10.0001 9.16667Z                    M9.16675 6.66666C9.16675 6.20642 9.53984 5.83333 10.0001 5.83333H10.0084C10.4687 5.83333 10.8417 6.20642 10.8417 6.66666C10.8417 7.1269 10.4687 7.49999 10.0084 7.49999H10.0001C9.53984 7.49999 9.16675 7.1269 9.16675 6.66666Z" />
+        </Style>
+        <Style Selector="^:error /template/ Border#NotificationBorder">
+            <Setter Property="Background" Value="#E20613" />
+        </Style>
+        <Style Selector="^:error">
+            <Setter Property="Foreground" Value="#FFFFFF" />
+        </Style>
+
+        <!--  Close button style  -->
+        <!--  WARNING, INFORMATION  -->
+        <Style Selector="^:warning /template/ PathIcon#CloseIcon, ^:information /template/ PathIcon#CloseIcon">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Foreground" Value="#323232" />
+            <Setter Property="Data" Value="M15.5893 5.58926C15.9148 5.26382 15.9148 4.73619 15.5893 4.41075C15.2639 4.08531 14.7363 4.08531 14.4108 4.41075L10.0001 8.82149L5.58934 4.41075C5.2639 4.08531 4.73626 4.08531 4.41083 4.41075C4.08539 4.73619 4.08539 5.26382 4.41083 5.58926L8.82157 10L4.41083 14.4107C4.08539 14.7362 4.08539 15.2638 4.41083 15.5893C4.73626 15.9147 5.2639 15.9147 5.58934 15.5893L10.0001 11.1785L14.4108 15.5893C14.7363 15.9147 15.2639 15.9147 15.5893 15.5893C15.9148 15.2638 15.9148 14.7362 15.5893 14.4107L11.1786 10L15.5893 5.58926Z" />
+        </Style>
+
+        <!--  SUCCESS, ERROR  -->
+        <Style Selector="^:success /template/ PathIcon#CloseIcon, ^:error /template/ PathIcon#CloseIcon">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="Data" Value="M15.5893 5.58926C15.9148 5.26382 15.9148 4.73619 15.5893 4.41075C15.2639 4.08531 14.7363 4.08531 14.4108 4.41075L10.0001 8.82149L5.58934 4.41075C5.2639 4.08531 4.73626 4.08531 4.41083 4.41075C4.08539 4.73619 4.08539 5.26382 4.41083 5.58926L8.82157 10L4.41083 14.4107C4.08539 14.7362 4.08539 15.2638 4.41083 15.5893C4.73626 15.9147 5.2639 15.9147 5.58934 15.5893L10.0001 11.1785L14.4108 15.5893C14.7363 15.9147 15.2639 15.9147 15.5893 15.5893C15.9148 15.2638 15.9148 14.7362 15.5893 14.4107L11.1786 10L15.5893 5.58926Z" />
+        </Style>
+
+        <Style Selector="^ /template/ Button#CloseButton">
+            <Setter Property="Background" Value="{x:Null}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

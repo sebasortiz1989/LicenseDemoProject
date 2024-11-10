@@ -25,6 +25,9 @@
       <Compile Update="CustomComponents.cs">
         <DependentUpon>CustomComponents.axaml</DependentUpon>
       </Compile>
+      <Compile Update="Components\Popups\WindowNotificationManager.cs">
+        <DependentUpon>WindowNotificationManager.axaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
