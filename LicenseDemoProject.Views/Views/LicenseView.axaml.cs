@@ -1,20 +1,23 @@
-﻿using Avalonia.Controls;
+﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media.Imaging;
 using LicenseDemoProject.ViewModels.Container;
 using LicenseDemoProject.ViewModels.Viewmodels;
-using Avalonia.Media.Imaging;
-using System.IO;
-using Avalonia;
+using Avalonia.Controls.Notifications;
 using Avalonia.Interactivity;
 using LicenseDemoProjectViews.Assets;
-using QlmLicenseLib;
 
 namespace LicenseDemoProjectViews.Views;
 
 public partial class LicenseView : UserControl
 {
-    private LicenseViewModel? _viewModel;
+    private INotificationManager? _notificationManager;
+
+    private INotificationManager NotificationManager => _notificationManager
+        ??= new WindowNotificationManager(TopLevel.GetTopLevel(this)!) {Position = NotificationPosition.BottomRight};
+
+private LicenseViewModel? _viewModel;
 
     public LicenseView()
     {
@@ -59,8 +62,7 @@ public partial class LicenseView : UserControl
         }
         else
         {
-            string text = "Activation failed. " + message;
-            // Show popup with text
+            NotificationManager.Show(new Notification("Activation Failed", message));
         }
     }
 }

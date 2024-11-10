@@ -23,7 +23,7 @@ public class LicenseViewModel : ViewModelBase
     {
         bool needsActivation = false;
         string errorMsg = string.Empty;
-        return licenseValidator.ValidateLicenseAtStartup(Environment.MachineName, ref needsActivation, ref errorMsg) == false;
+        return licenseValidator.ValidateLicenseAtStartup(Environment.MachineName, ref needsActivation, ref errorMsg);
     }
 
     public bool TryActivateLicense(out string message)
