@@ -67,7 +67,8 @@
                                 UseFloatingWatermark="False"
                                 VerticalContentAlignment="Center"
                                 Watermark="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
-                                Width="580" />
+                                Width="580"
+                                x:Name="LicenseKeyTextBox" />
                             <Button
                                 Background="Black"
                                 CornerRadius="15"
