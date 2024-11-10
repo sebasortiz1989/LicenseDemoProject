@@ -34,11 +34,11 @@ private LicenseViewModel? _viewModel;
         MyImage.Source = ByteArrayToBitmap(LicenseResources.KeyIconImg);
     }
 
-    protected override void OnLoaded(RoutedEventArgs e)
+    protected override void OnInitialized()
     {
-        base.OnLoaded(e);
-
-        if (_viewModel != null && _viewModel.ValidateLicense())
+        base.OnInitialized();
+        
+        if (_viewModel != null && !_viewModel.ValidateLicense())
         {
             ShowViewAction?.Invoke(ViewsEnum.LicenseActivatedView);
         }

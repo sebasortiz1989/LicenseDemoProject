@@ -7,7 +7,7 @@ public class LicenseViewModel : ViewModelBase
 {
     private readonly LicenseValidator licenseValidator;
     private string webServiceUrl = string.Empty;
-    private string computerId = "01";
+    private string computerId = "01ImmoPro";
     private string qlmVersion = "5.0.00";
     private string qlmUserData = string.Empty;
     private bool activationResult = false;
@@ -27,7 +27,7 @@ public class LicenseViewModel : ViewModelBase
     {
         bool needsActivation = false;
         string errorMsg = string.Empty;
-        return licenseValidator.ValidateLicenseAtStartup(Environment.MachineName, ref needsActivation, ref errorMsg);
+        return !licenseValidator.ValidateLicenseAtStartup(Environment.MachineName, ref needsActivation, ref errorMsg);
     }
 
     public void TryActivateLicense()
@@ -35,7 +35,7 @@ public class LicenseViewModel : ViewModelBase
         licenseValidator.QlmLicenseObject.ActivateLicense(
             webServiceUrl,
             LicenseKeyText,
-            computerId,
+            Environment.MachineName,
             Environment.MachineName,
             qlmVersion,
             qlmUserData,
