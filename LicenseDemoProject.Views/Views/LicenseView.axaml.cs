@@ -6,6 +6,7 @@ using LicenseDemoProject.ViewModels.Container;
 using LicenseDemoProject.ViewModels.Viewmodels;
 using Avalonia.Controls.Notifications;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 using LicenseDemoProjectViews.Assets;
 
 namespace LicenseDemoProjectViews.Views;
@@ -23,7 +24,10 @@ private LicenseViewModel? _viewModel;
     {
         DataContext = ViewModelProvider.Instance.GetViewModel(typeof(LicenseViewModel));
         if (DataContext is LicenseViewModel testViewModel)
+        {
             _viewModel = testViewModel;
+            _viewModel.OnActivation += OnLicenseActivated;
+        }
 
         InitializeComponent();
 
@@ -55,14 +59,38 @@ private LicenseViewModel? _viewModel;
 
     private void UnlockButton_OnTapped(object? sender, TappedEventArgs e)
     {
-        string message = string.Empty;
-        if (_viewModel != null && _viewModel.TryActivateLicense(out message))
+        if (_viewModel == null)
         {
-            ShowViewAction?.Invoke(ViewsEnum.LicenseActivatedView);
+            return;
         }
-        else
+
+        _viewModel.IsLoading = true;
+
+        Task.Run(() =>
         {
-            NotificationManager.Show(new Notification("Activation Failed", message));
+            _viewModel.TryActivateLicense();
+        });
+    }
+
+    private void OnLicenseActivated(Tuple<bool, string> result)
+    {
+        if (_viewModel == null)
+        {
+            return;
         }
+
+        Dispatcher.UIThread.Invoke(() =>
+        {
+            if (result.Item1)
+            {
+                ShowViewAction?.Invoke(ViewsEnum.LicenseActivatedView);
+            }
+            else
+            {
+                NotificationManager.Show(new Notification("Activation Failed", result.Item2));
+            }
+
+            _viewModel.IsLoading = false;
+        });
     }
 }

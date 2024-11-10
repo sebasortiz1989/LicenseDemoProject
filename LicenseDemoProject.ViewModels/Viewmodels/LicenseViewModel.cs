@@ -16,8 +16,12 @@ public class LicenseViewModel : ViewModelBase
     {
         this.licenseValidator = licenseValidator;
     }
-    
+
+    public Action<Tuple<bool, string>>? OnActivation { get; set; }
+
     public string LicenseKeyText { get; set; }
+
+    public bool IsLoading { get; set; }
 
     public bool ValidateLicense()
     {
@@ -26,7 +30,7 @@ public class LicenseViewModel : ViewModelBase
         return licenseValidator.ValidateLicenseAtStartup(Environment.MachineName, ref needsActivation, ref errorMsg);
     }
 
-    public bool TryActivateLicense(out string message)
+    public void TryActivateLicense()
     {
         licenseValidator.QlmLicenseObject.ActivateLicense(
             webServiceUrl,
@@ -38,7 +42,8 @@ public class LicenseViewModel : ViewModelBase
             out var response);
 
         ILicenseInfo licenseInfo = new LicenseInfo();
-        message = string.Empty;
-        return licenseValidator.QlmLicenseObject.ParseResults(response, ref licenseInfo, ref message);
+        string message = string.Empty;
+        var tryActivateLicenseBoolean = licenseValidator.QlmLicenseObject.ParseResults(response, ref licenseInfo, ref message);
+        OnActivation?.Invoke(new Tuple<bool, string>(tryActivateLicenseBoolean, message));
     }
 }

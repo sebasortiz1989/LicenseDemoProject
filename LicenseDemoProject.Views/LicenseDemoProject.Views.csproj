@@ -25,6 +25,9 @@
       <Compile Update="CustomComponents.cs">
         <DependentUpon>CustomComponents.axaml</DependentUpon>
       </Compile>
+      <Compile Update="Components\ProgressRing.cs">
+        <DependentUpon>ProgressRing.xaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -36,6 +39,11 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>LicenseResources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Components\ProgressRing.xaml" />
+      <AvaloniaXaml Include="Components\ProgressRing.xaml" />
     </ItemGroup>
 
 </Project>

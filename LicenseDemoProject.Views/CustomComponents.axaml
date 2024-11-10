@@ -10,4 +10,5 @@
 
     <!--  Add Styles Here  -->
     <StyleInclude Source="/Components/ButtonLink.axaml" />
+    <StyleInclude Source="/Components/ProgressRing.xaml" />
 </Styles>

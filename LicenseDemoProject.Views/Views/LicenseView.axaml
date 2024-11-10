@@ -157,6 +157,14 @@
                     </Style>
                 </Button.Styles>
             </Button>
+
+            <components:ProgressRing
+                Foreground="Black"
+                Height="80"
+                HorizontalAlignment="Center"
+                IsActive="{Binding IsLoading}"
+                VerticalAlignment="Center"
+                Width="80" />
         </Grid>
     </Viewbox>
 
