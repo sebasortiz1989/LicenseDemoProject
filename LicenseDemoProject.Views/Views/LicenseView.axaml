@@ -87,7 +87,12 @@
                                 VerticalAlignment="Bottom"
                                 VerticalContentAlignment="Center"
                                 Width="180">
-                                Unlock --&gt;
+                                <Border
+                                    Background="Transparent"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch">
+                                    <TextBlock Text="Unlock --&gt;" />
+                                </Border>
                                 <Button.Styles>
                                     <Style Selector="Button">
                                         <Setter Property="Background" Value="Transparent" />
@@ -138,7 +143,12 @@
                 VerticalAlignment="Bottom"
                 VerticalContentAlignment="Center"
                 Width="250">
-                Go Back
+                <Border
+                    Background="Transparent"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+                    <TextBlock Text="Go Back" />
+                </Border>
                 <Button.Styles>
                     <Style Selector="Button">
                         <Setter Property="Background" Value="Transparent" />

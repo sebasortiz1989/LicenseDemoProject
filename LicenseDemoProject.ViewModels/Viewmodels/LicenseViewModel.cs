@@ -1,20 +1,29 @@
-﻿using LicenseDemoProject.Services;
-using QlmLicenseLib;
+﻿using QlmLicenseLib;
 
 namespace LicenseDemoProject.ViewModels.Viewmodels;
 
 public class LicenseViewModel : ViewModelBase
 {
-    private readonly LicenseValidator licenseValidator;
+    private LicenseValidator licenseValidator;
+    private readonly string settingsFile;
     private string webServiceUrl = string.Empty;
     private string computerId = "01ImmoPro";
     private string qlmVersion = "5.0.00";
     private string qlmUserData = string.Empty;
     private bool activationResult = false;
 
-    public LicenseViewModel(LicenseValidator licenseValidator)
+    public LicenseViewModel()
     {
-        this.licenseValidator = licenseValidator;
+        // var assembly = typeof(LicenseViewModel).Assembly;
+        // string fileName = "Demo 1.0.lw.xml";
+        // string assemblyLocation = assembly.Location;
+        // string assemblyDirectory = Path.GetDirectoryName(assemblyLocation);
+        // string solutionDirectory = Directory.GetParent(assemblyDirectory).Parent.Parent.Parent.FullName;
+        // solutionDirectory = Path.Combine(solutionDirectory, "LicenseDemoProject.ViewModels");
+        // settingsFile = Path.Combine(solutionDirectory, fileName);
+        // bool exists = File.Exists(settingsFile);
+        licenseValidator = new LicenseValidator(string.Empty, ResourcesLicenseDemo.XmlSettings);
+        computerId = Environment.MachineName;
     }
 
     public Action<Tuple<bool, string>>? OnActivation { get; set; }
@@ -26,8 +35,9 @@ public class LicenseViewModel : ViewModelBase
     public bool ValidateLicense()
     {
         bool needsActivation = false;
-        string errorMsg = string.Empty;
-        return !licenseValidator.ValidateLicenseAtStartup(Environment.MachineName, ref needsActivation, ref errorMsg);
+        string returnMsg = string.Empty;
+        var validateLicenseAtStartup = licenseValidator.ValidateLicenseAtStartup(computerId, ref needsActivation, ref returnMsg);
+        return validateLicenseAtStartup;
     }
 
     public void TryActivateLicense()
@@ -35,7 +45,7 @@ public class LicenseViewModel : ViewModelBase
         licenseValidator.QlmLicenseObject.ActivateLicense(
             webServiceUrl,
             LicenseKeyText,
-            Environment.MachineName,
+            computerId,
             Environment.MachineName,
             qlmVersion,
             qlmUserData,

@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseDemoProject.ViewMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseDemoProject.Views", "LicenseDemoProject.Views\LicenseDemoProject.Views.csproj", "{2CB76556-CA3D-4B61-B146-4D0AC726F893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseDemoProject.Services", "LicenseDemoProject.Services\LicenseDemoProject.Services.csproj", "{7DEEB46B-F26D-4082-B2E5-B3F2CF92790A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,10 +55,6 @@ Global
 		{2CB76556-CA3D-4B61-B146-4D0AC726F893}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CB76556-CA3D-4B61-B146-4D0AC726F893}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CB76556-CA3D-4B61-B146-4D0AC726F893}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DEEB46B-F26D-4082-B2E5-B3F2CF92790A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DEEB46B-F26D-4082-B2E5-B3F2CF92790A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DEEB46B-F26D-4082-B2E5-B3F2CF92790A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DEEB46B-F26D-4082-B2E5-B3F2CF92790A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

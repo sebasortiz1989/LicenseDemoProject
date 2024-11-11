@@ -38,7 +38,7 @@ private LicenseViewModel? _viewModel;
     {
         base.OnInitialized();
         
-        if (_viewModel != null && !_viewModel.ValidateLicense())
+        if (_viewModel != null && _viewModel.ValidateLicense())
         {
             ShowViewAction?.Invoke(ViewsEnum.LicenseActivatedView);
         }

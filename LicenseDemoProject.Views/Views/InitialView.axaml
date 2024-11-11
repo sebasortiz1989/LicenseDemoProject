@@ -23,7 +23,12 @@
                     VerticalAlignment="Center"
                     VerticalContentAlignment="Center"
                     Width="350">
-                    Go To License View
+                    <Border
+                        Background="Transparent"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                        <TextBlock Text="Go To License View" />
+                    </Border>
                     <Button.Styles>
                         <Style Selector="Button">
                             <Setter Property="Background" Value="Transparent" />
@@ -54,7 +59,12 @@
                     VerticalAlignment="Center"
                     VerticalContentAlignment="Center"
                     Width="350">
-                    Other View 1
+                    <Border
+                        Background="Transparent"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                        <TextBlock Text="Other View 1" />
+                    </Border>
                     <Button.Styles>
                         <Style Selector="Button">
                             <Setter Property="Background" Value="Transparent" />
