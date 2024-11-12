@@ -6,6 +6,7 @@ public class LicenseViewModel : ViewModelBase
 {
     private LicenseValidator licenseValidator;
     private readonly string settingsFile;
+    private readonly string computerKeyFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "computerKey.txt");
     private string webServiceUrl = string.Empty;
     private string computerId = "01ImmoPro";
     private string qlmVersion = "5.0.00";
@@ -23,7 +24,6 @@ public class LicenseViewModel : ViewModelBase
         settingsFile = Path.Combine(solutionDirectory, fileName);
         bool exists = File.Exists(settingsFile);
         licenseValidator = new LicenseValidator(settingsFile);
-        // licenseValidator = new LicenseValidator(string.Empty, ResourcesLicenseDemo.XmlSettings);
         computerId = Environment.MachineName;
     }
 
@@ -37,8 +37,15 @@ public class LicenseViewModel : ViewModelBase
     {
         bool needsActivation = false;
         string returnMsg = string.Empty;
-        var validateLicenseAtStartup = licenseValidator.ValidateLicenseAtStartup(ELicenseBinding.ComputerName, ref needsActivation, ref returnMsg);
-        return validateLicenseAtStartup;
+        
+        if (!File.Exists(computerKeyFilePath))
+        {
+            return false;
+        }
+        
+        string storedKey = File.ReadAllText(computerKeyFilePath);
+        var boolean = licenseValidator.ValidateLicense(string.Empty, storedKey, computerId, ref needsActivation, ref returnMsg);
+        return boolean;
     }
 
     public void TryActivateLicense()
@@ -55,6 +62,12 @@ public class LicenseViewModel : ViewModelBase
         ILicenseInfo licenseInfo = new LicenseInfo();
         string message = string.Empty;
         var tryActivateLicenseBoolean = licenseValidator.QlmLicenseObject.ParseResults(response, ref licenseInfo, ref message);
+
+        if (tryActivateLicenseBoolean)
+        {
+            File.WriteAllText(computerKeyFilePath, licenseInfo.ComputerKey);
+        }
+        
         OnActivation?.Invoke(new Tuple<bool, string>(tryActivateLicenseBoolean, message));
     }
 }
