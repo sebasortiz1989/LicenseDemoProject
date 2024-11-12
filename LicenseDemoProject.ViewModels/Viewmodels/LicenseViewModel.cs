@@ -14,15 +14,16 @@ public class LicenseViewModel : ViewModelBase
 
     public LicenseViewModel()
     {
-        // var assembly = typeof(LicenseViewModel).Assembly;
-        // string fileName = "Demo 1.0.lw.xml";
-        // string assemblyLocation = assembly.Location;
-        // string assemblyDirectory = Path.GetDirectoryName(assemblyLocation);
-        // string solutionDirectory = Directory.GetParent(assemblyDirectory).Parent.Parent.Parent.FullName;
-        // solutionDirectory = Path.Combine(solutionDirectory, "LicenseDemoProject.ViewModels");
-        // settingsFile = Path.Combine(solutionDirectory, fileName);
-        // bool exists = File.Exists(settingsFile);
-        licenseValidator = new LicenseValidator(string.Empty, ResourcesLicenseDemo.XmlSettings);
+        var assembly = typeof(LicenseViewModel).Assembly;
+        string fileName = "Demo Enterprise 1.0.lw.xml";
+        string assemblyLocation = assembly.Location;
+        string assemblyDirectory = Path.GetDirectoryName(assemblyLocation);
+        string solutionDirectory = Directory.GetParent(assemblyDirectory).Parent.Parent.Parent.FullName;
+        solutionDirectory = Path.Combine(solutionDirectory, "LicenseDemoProject.ViewModels");
+        settingsFile = Path.Combine(solutionDirectory, fileName);
+        bool exists = File.Exists(settingsFile);
+        licenseValidator = new LicenseValidator(settingsFile);
+        // licenseValidator = new LicenseValidator(string.Empty, ResourcesLicenseDemo.XmlSettings);
         computerId = Environment.MachineName;
     }
 
@@ -36,7 +37,7 @@ public class LicenseViewModel : ViewModelBase
     {
         bool needsActivation = false;
         string returnMsg = string.Empty;
-        var validateLicenseAtStartup = licenseValidator.ValidateLicenseAtStartup(computerId, ref needsActivation, ref returnMsg);
+        var validateLicenseAtStartup = licenseValidator.ValidateLicenseAtStartup(ELicenseBinding.ComputerName, ref needsActivation, ref returnMsg);
         return validateLicenseAtStartup;
     }
 

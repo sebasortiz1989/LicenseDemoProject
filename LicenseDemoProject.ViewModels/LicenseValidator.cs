@@ -48,32 +48,32 @@ namespace LicenseDemoProject.ViewModels
             // by the Protect Your App Wizard.
             // To load the settings from the XML file, call the license.LoadSettings function.
 
-            license.DefineProduct(1, "ImmoPro", 1, 0, "DemoKey", "{24EAA3C1-3DD7-40E0-AEA3-D20AA17A6005}");
-            license.LicenseEngineLibrary = ELicenseEngineLibrary.DotNet;
-            license.PublicKey = "A59Jip0lt73Xig==";
-            license.RsaPublicKey = "<RSAKeyValue><Modulus>uZsys/30c2wfP4ywq/Paxmztc/+p8vCgMzxHpguP3AMOtbUFMWC8RDhjdzQE5AuNXChVnp9IAs4MNKWMoVwfVLyDXVlVPaFKTPIbDmUMtz/8t0C4TOXcOTMMEPmvKvg8nolHWfdxJeF5jfOdDl/3TNtgATkSUDiT1ltLR6MaG9s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
-            license.CommunicationEncryptionKey = "{B6163D99-F46A-4580-BB42-BF276A507A14}";
-            license.DefaultWebServiceUrl = "https://qlm3.net/qlmdemo/QlmLicenseServer/qlmservice.asmx";
-            license.StoreKeysLocation = EStoreKeysTo.EFileCommonData;
-            license.StoreKeysOptions = EStoreKeysOptions.EStoreKeysPerUser;
-            license.ValidateOnServer = false;
-            license.PublishAnalytics = true;
-            license.EvaluationPerUser = true;
-            license.EnableMultibyte = true;
-            license.ExpiryDateRoundHoursUp = true;
-            license.EnableSoapExtension = true;
-            license.EnableClientLanguageDetection = true;
-            license.LimitTerminalServerInstances = false;
-            license.AllowGenericKeys = false;
-            license.DownloadLicenseFile = false;
-            license.DownloadProductProperties = false;
-            license.Version = "6.0.00";
+            license.DefineProduct (2, "Demo Enterprise", 1, 0, "DemoKey", "{7E3C0CFD-8495-462F-9C1F-D7EDB4355448}");
+			license.LicenseEngineLibrary = ELicenseEngineLibrary.DotNet;
+			license.PublicKey = "F+FViE9WEKoLDA==";
+			license.RsaPublicKey = "<RSAKeyValue><Modulus>4DK1SdhuO1waywt6D7sP6wTH4ih7+6In5idGfFBDMj6O+7wtUFkM6lqFn1D//HT0tb090XG34hlGUyAO5sCZd2z5s54T70Z/DdFG8ef/61NFPxbKFYfUmD87swgRdDLQPzPCsIqECV0aIAXhldrLBY3JxGobsPlldiPo3mir6pk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
+			license.CommunicationEncryptionKey = "{B6163D99-F46A-4580-BB42-BF276A507A14}";
+			license.DefaultWebServiceUrl = "https://qlm3.net/qlmdemo/QlmLicenseServer/qlmservice.asmx";
+			license.StoreKeysLocation = EStoreKeysTo.EFileCommonData;
+			license.StoreKeysOptions = EStoreKeysOptions.EStoreKeysPerUser;
+			license.ValidateOnServer = false;
+			license.PublishAnalytics = true;
+			license.EvaluationPerUser = true;
+			license.EnableMultibyte = true;
+			license.ExpiryDateRoundHoursUp = true;
+			license.EnableSoapExtension = true;
+			license.EnableClientLanguageDetection = true;
+			license.LimitTerminalServerInstances = false;
+			license.AllowGenericKeys = false;
+			license.DownloadLicenseFile = false;
+			license.DownloadProductProperties = true;
+			license.Version = "5.0.00";
 
             // If you are using QLM Professional, you should also set the communicationEncryptionKey property
             // The CommunicationEncryptionKey must match the value specified in the web.config file of the QLM License Server
 
             // Make sure that the StoreKeysLocation specified here is consistent with the one specified in the QLM .NET Control
-
+            
 
             // To ignore server certificate issues, uncomment this line
             //ServicePointManager.ServerCertificateValidationCallback = ServerCertificateValidator;
@@ -86,8 +86,8 @@ namespace LicenseDemoProject.ViewModels
         {
             license = new QlmLicense();
             license.LoadSettings(settingsFile);
-
-            license.RsaPublicKey = "<RSAKeyValue><Modulus>uZsys/30c2wfP4ywq/Paxmztc/+p8vCgMzxHpguP3AMOtbUFMWC8RDhjdzQE5AuNXChVnp9IAs4MNKWMoVwfVLyDXVlVPaFKTPIbDmUMtz/8t0C4TOXcOTMMEPmvKvg8nolHWfdxJeF5jfOdDl/3TNtgATkSUDiT1ltLR6MaG9s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
+            
+			license.RsaPublicKey = "<RSAKeyValue><Modulus>4DK1SdhuO1waywt6D7sP6wTH4ih7+6In5idGfFBDMj6O+7wtUFkM6lqFn1D//HT0tb090XG34hlGUyAO5sCZd2z5s54T70Z/DdFG8ef/61NFPxbKFYfUmD87swgRdDLQPzPCsIqECV0aIAXhldrLBY3JxGobsPlldiPo3mir6pk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
 
             string errorMessage;
             if (license.ValidateSettingsFile(settingsFile, out errorMessage) == false)
@@ -120,8 +120,8 @@ namespace LicenseDemoProject.ViewModels
             {
                 license.LoadSettingsXml(settingsContent);
 
-
-                license.RsaPublicKey = "<RSAKeyValue><Modulus>uZsys/30c2wfP4ywq/Paxmztc/+p8vCgMzxHpguP3AMOtbUFMWC8RDhjdzQE5AuNXChVnp9IAs4MNKWMoVwfVLyDXVlVPaFKTPIbDmUMtz/8t0C4TOXcOTMMEPmvKvg8nolHWfdxJeF5jfOdDl/3TNtgATkSUDiT1ltLR6MaG9s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
+                
+			license.RsaPublicKey = "<RSAKeyValue><Modulus>4DK1SdhuO1waywt6D7sP6wTH4ih7+6In5idGfFBDMj6O+7wtUFkM6lqFn1D//HT0tb090XG34hlGUyAO5sCZd2z5s54T70Z/DdFG8ef/61NFPxbKFYfUmD87swgRdDLQPzPCsIqECV0aIAXhldrLBY3JxGobsPlldiPo3mir6pk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
 
                 string errorMessage;
                 if (license.ValidateSettingsContent(settingsContent, out errorMessage) == false)
@@ -242,7 +242,7 @@ namespace LicenseDemoProject.ViewModels
 
             if (ret && this.QlmLicenseObject.DownloadLicenseFile)
             {
-                ret = VerifyLicenseFile(computerID, out returnMsg);
+                ret = VerifyLicenseFile(computerID, out returnMsg);                
             }
 
             return ret;
@@ -334,11 +334,11 @@ namespace LicenseDemoProject.ViewModels
             if (ret == true)
             {
 
-                if (license.IsActivationLicense(license.LicenseType))
+                if (license.IsActivationLicense (license.LicenseType))
                 {
                     needsActivation = true;
                     ret = false;
-                }
+                }                
             }
 
             return ret;
@@ -478,12 +478,12 @@ namespace LicenseDemoProject.ViewModels
 
             DateTime serverDate;
             string response = string.Empty;
-            if (license.PingEx(string.Empty, out response, out serverDate) == false)
+            if (license.PingEx (string.Empty, out response, out serverDate) == false)
             {
                 // we cannot connect to the server so we cannot do any validation with the server
                 return false;
             }
-
+            
 
             // try to reactivate the license and see if it still expired
             response = string.Empty;
@@ -528,7 +528,7 @@ namespace LicenseDemoProject.ViewModels
             errorMessage = string.Empty;
             bool ret = false;
 
-
+            
             ILicenseInfo li = license.VerifyActivatedLicenseFile(this.ActivationKey, this.ComputerKey, computerID, out errorMessage);
 
             if (li != null)
@@ -570,7 +570,7 @@ namespace LicenseDemoProject.ViewModels
             get
             {
                 return computerKey;
-            }
+            }            
         }
 
         public bool IsEvaluation
@@ -696,7 +696,7 @@ namespace LicenseDemoProject.ViewModels
                 // WriteProductPropertiesFile contacts the server, gets the product properties
                 // and writes them to a digitally signed xml file
                 license.WriteProductPropertiesFile(this.ActivationKey, licenseFile, out errorMessage);
-
+                
             }
             catch (Exception ex)
             {
@@ -740,7 +740,7 @@ namespace LicenseDemoProject.ViewModels
                     string errorMessage;
 
                     string installID = analytics.ReadInstallID(out errorMessage);
-
+                    
 
                     if (String.IsNullOrEmpty(installID))
                     {
